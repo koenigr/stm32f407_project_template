@@ -1,5 +1,0 @@
-if(EXISTS "/home/koenigr/git/stm32f407_project_template/build/host/Tests/Host/host_tests[1]_tests.cmake")
-  include("/home/koenigr/git/stm32f407_project_template/build/host/Tests/Host/host_tests[1]_tests.cmake")
-else()
-  add_test(host_tests_NOT_BUILT host_tests_NOT_BUILT)
-endif()

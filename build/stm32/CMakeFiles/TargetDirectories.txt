@@ -1,5 +1,0 @@
-/home/koenigr/git/stm32f407_project_template/build/stm32/CMakeFiles/edit_cache.dir
-/home/koenigr/git/stm32f407_project_template/build/stm32/CMakeFiles/rebuild_cache.dir
-/home/koenigr/git/stm32f407_project_template/build/stm32/App/CMakeFiles/firmware.dir
-/home/koenigr/git/stm32f407_project_template/build/stm32/App/CMakeFiles/edit_cache.dir
-/home/koenigr/git/stm32f407_project_template/build/stm32/App/CMakeFiles/rebuild_cache.dir
