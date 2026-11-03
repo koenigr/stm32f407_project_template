@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/koenigr/git/stm32f407_project_template/build/host/_deps/googletest-src/googletest/include -I/home/koenigr/git/stm32f407_project_template/build/host/_deps/googletest-src/googletest
 
-CXX_FLAGS = -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17
+CXX_FLAGS = -g -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17
 

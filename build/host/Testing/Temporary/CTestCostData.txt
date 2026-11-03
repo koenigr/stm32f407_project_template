@@ -1,2 +1,2 @@
-TemplateTest.BasicTest 1 0.00904002
+TemplateTest.BasicTest 1 0.00871754
 ---

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -isystem /home/koenigr/git/stm32f407_project_template/build/host/_deps/googletest-src/googletest/include -isystem /home/koenigr/git/stm32f407_project_template/build/host/_deps/googletest-src/googletest
 
-CXX_FLAGS = -std=c++17
+CXX_FLAGS = -g -std=c++17
 

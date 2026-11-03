@@ -3,5 +3,9 @@
 
 App/CMakeFiles/firmware.dir/Src/main.c.obj: ../../App/Src/main.c
 
+App/CMakeFiles/firmware.dir/__/Platform/Startup/runtime.c.obj: ../../Platform/Startup/runtime.c
+
+
+../../Platform/Startup/runtime.c:
 
 ../../App/Src/main.c:

@@ -1,0 +1,61 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  host:
+    name: Host Tests
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install CMake
+        run: sudo apt-get update && sudo apt-get install -y cmake
+
+      - name: Configure
+        run: cmake --preset host
+
+      - name: Build
+        run: cmake --build --preset host
+
+      - name: Test
+        run: ctest --preset host
+
+  stm32:
+    name: STM32 Firmware
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install ARM GCC
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi
+
+      - name: Configure
+        run: cmake --preset stm32
+
+      - name: Build
+        run: cmake --build --preset stm32
+
+      - name: Check firmware artifacts
+        run: |
+          test -f build/stm32/App/firmware.elf
+          test -f build/stm32/App/firmware.hex
+          test -f build/stm32/App/firmware.bin
+          arm-none-eabi-size build/stm32/App/firmware.elf
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: stm32-firmware
+          path: |
+            build/stm32/App/firmware.elf
+            build/stm32/App/firmware.hex
+            build/stm32/App/firmware.bin

@@ -4,3 +4,6 @@
 App/CMakeFiles/firmware.dir/Src/main.c.obj
  /home/koenigr/git/stm32f407_project_template/App/Src/main.c
 
+App/CMakeFiles/firmware.dir/__/Platform/Startup/runtime.c.obj
+ /home/koenigr/git/stm32f407_project_template/Platform/Startup/runtime.c
+

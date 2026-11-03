@@ -7,11 +7,11 @@ ASM_DEFINES =
 
 ASM_INCLUDES = -I/home/koenigr/git/stm32f407_project_template/App/Inc
 
-ASM_FLAGS = -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Werror -ffunction-sections -fdata-sections
+ASM_FLAGS = -g -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Werror -ffunction-sections -fdata-sections
 
 C_DEFINES = 
 
 C_INCLUDES = -I/home/koenigr/git/stm32f407_project_template/App/Inc
 
-C_FLAGS = -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Werror -ffunction-sections -fdata-sections -std=c11
+C_FLAGS = -g -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -Wextra -Werror -ffunction-sections -fdata-sections -std=c11
 

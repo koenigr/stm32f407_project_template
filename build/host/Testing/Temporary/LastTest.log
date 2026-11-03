@@ -1,10 +1,10 @@
-Start testing: Nov 03 15:20 CET
+Start testing: Nov 03 15:43 CET
 ----------------------------------------------------------
 1/1 Testing: TemplateTest.BasicTest
 1/1 Test: TemplateTest.BasicTest
 Command: "/home/koenigr/git/stm32f407_project_template/build/host/Tests/Host/host_tests" "--gtest_filter=TemplateTest.BasicTest" "--gtest_also_run_disabled_tests"
 Directory: /home/koenigr/git/stm32f407_project_template/build/host/Tests/Host
-"TemplateTest.BasicTest" start time: Nov 03 15:20 CET
+"TemplateTest.BasicTest" start time: Nov 03 15:43 CET
 Output:
 ----------------------------------------------------------
 Running main() from /home/koenigr/git/stm32f407_project_template/build/host/_deps/googletest-src/googletest/src/gtest_main.cc
@@ -23,8 +23,8 @@ Note: Google Test filter = TemplateTest.BasicTest
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"TemplateTest.BasicTest" end time: Nov 03 15:20 CET
+"TemplateTest.BasicTest" end time: Nov 03 15:43 CET
 "TemplateTest.BasicTest" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Nov 03 15:20 CET
+End testing: Nov 03 15:43 CET

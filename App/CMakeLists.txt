@@ -32,3 +32,17 @@ set_target_properties(firmware PROPERTIES
     SUFFIX ".elf"
     LINKER_LANGUAGE CXX
 )
+
+find_program(ARM_OBJCOPY arm-none-eabi-objcopy REQUIRED)
+
+add_custom_command(TARGET firmware POST_BUILD
+    COMMAND ${ARM_OBJCOPY} -O ihex
+        $<TARGET_FILE:firmware>
+        $<TARGET_FILE_DIR:firmware>/firmware.hex
+
+    COMMAND ${ARM_OBJCOPY} -O binary
+        $<TARGET_FILE:firmware>
+        $<TARGET_FILE_DIR:firmware>/firmware.bin
+
+    COMMENT "Generating HEX and BIN firmware images"
+)

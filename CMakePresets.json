@@ -12,6 +12,7 @@
             "generator": "Unix Makefiles",
             "binaryDir": "${sourceDir}/build/host",
             "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
                 "BUILD_HOST_TESTS": "ON",
                 "BUILD_FIRMWARE": "OFF"
             }
@@ -23,6 +24,7 @@
             "binaryDir": "${sourceDir}/build/stm32",
             "toolchainFile": "${sourceDir}/cmake/arm-none-eabi-gcc.cmake",
             "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
                 "BUILD_HOST_TESTS": "OFF",
                 "BUILD_FIRMWARE": "ON"
             }
