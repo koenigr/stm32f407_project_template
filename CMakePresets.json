@@ -1,0 +1,50 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 22,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "host",
+            "displayName": "Host Build",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/host",
+            "cacheVariables": {
+                "BUILD_HOST_TESTS": "ON",
+                "BUILD_FIRMWARE": "OFF"
+            }
+        },
+        {
+            "name": "stm32",
+            "displayName": "STM32F407 Firmware",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/stm32",
+            "toolchainFile": "${sourceDir}/cmake/arm-none-eabi-gcc.cmake",
+            "cacheVariables": {
+                "BUILD_HOST_TESTS": "OFF",
+                "BUILD_FIRMWARE": "ON"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "host",
+            "configurePreset": "host"
+        },
+        {
+            "name": "stm32",
+            "configurePreset": "stm32"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "host",
+            "configurePreset": "host",
+            "output": {
+                "outputOnFailure": true
+            }
+        }
+    ]
+}
