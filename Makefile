@@ -1,4 +1,4 @@
-.PHONY: all host stm32 test size clean help
+.PHONY: all host stm32 test size clean help tidy-host tidy-stm32
 
 all: host stm32
 
@@ -18,6 +18,16 @@ size: stm32
 
 clean:
 	rm -rf build
+
+tidy-host:
+	cmake --preset host
+	cmake --build --preset host
+	clang-tidy -p build/host Tests/Host/test_main.cpp
+
+tidy-stm32:
+	cmake --preset stm32
+	cmake --build --preset stm32
+	clang-tidy -p build/stm32 App/Src/main.c Platform/Startup/runtime.c
 
 help:
 	@echo "Available targets:"

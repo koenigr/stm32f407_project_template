@@ -25,6 +25,12 @@ jobs:
       - name: Test
         run: ctest --preset host
 
+      - name: Install clang-tidy
+        run: sudo apt-get install -y clang-tidy
+
+      - name: Run clang-tidy
+        run: make tidy-host
+
   stm32:
     name: STM32 Firmware
     runs-on: ubuntu-22.04
@@ -59,3 +65,9 @@ jobs:
             build/stm32/App/firmware.elf
             build/stm32/App/firmware.hex
             build/stm32/App/firmware.bin
+
+      - name: Install clang-tidy
+        run: sudo apt-get install -y clang-tidy
+
+      - name: Run clang-tidy
+        run: make tidy-stm32
