@@ -1,5 +1,7 @@
 # STM32F407 Project Template
 
+![Renode Tests](https://github.com/koenigr/stm32f407_project_template/actions/workflows/build.yml/badge.svg)
+
 A reusable bare-metal project template for developing embedded systems based on the **STM32F407** microcontroller.
 
 The project provides a CMake-based build system, ARM GNU toolchain configuration, CMSIS integration, host and target testing infrastructure, static analysis and GitHub Actions CI.
