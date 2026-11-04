@@ -1,5 +1,5 @@
 .PHONY: all host stm32 test size clean help tidy-host tidy-stm32 \
-	misra misra-check pre-commit-checks
+	misra pre-commit-checks target-tests
 
 CPPCHECK ?= cppcheck
 MISRA_ADDON ?= $(shell find /usr /usr/local \
@@ -35,7 +35,7 @@ tidy-stm32:
 	cmake --build --preset stm32
 	clang-tidy -p build/stm32 App/Src/main.c Platform/Startup/runtime.c
 
-misra: misra-check
+misra: stm32
 	@test -f "$(MISRA_ADDON)" || \
 		(echo "ERROR: Cppcheck MISRA addon not found"; exit 1)
 	$(CPPCHECK) \
@@ -49,17 +49,10 @@ pre-commit-checks: host stm32
 	git diff --check
 	clang-tidy -p build/host Tests/Host/test_main.cpp
 	clang-tidy -p build/stm32 App/Src/main.c Platform/Startup/runtime.c
-	$(MAKE) misra-check
+	$(MAKE) misra
 
-misra-check: stm32
-	@test -f "$(MISRA_ADDON)" || \
-		(echo "ERROR: Cppcheck MISRA addon not found"; exit 1)
-	$(CPPCHECK) \
-		--project=build/stm32/compile_commands.json \
-		--addon=$(MISRA_ADDON) \
-		--enable=warning,style,performance,portability \
-		--inline-suppr \
-		--error-exitcode=1
+target-tests: stm32
+	cmake --build --preset stm32 --target target_tests
 
 help:
 	@echo "Available targets:"
