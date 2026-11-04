@@ -5,6 +5,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+concurrecny:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   host:
     name: Host Tests
@@ -62,6 +66,16 @@ jobs:
           test -f build/stm32/App/firmware.hex
           test -f build/stm32/App/firmware.bin
           arm-none-eabi-size build/stm32/App/firmware.elf
+
+      - name: Check target test artifact
+        run: |
+          test -f build/stm32/Tests/Target/target_tests.elf
+          arm-none-eabi-size build/stm32/Tests/Target/target_tests.elf
+
+      - name: Check target test artifact
+        run: |
+          test -f build/stm32/Tests/Target/target_tests.elf
+          arm-none-eabi-size build/stm32/Tests/Target/target_tests.elf
 
       - name: Upload firmware
         uses: actions/upload-artifact@v4
