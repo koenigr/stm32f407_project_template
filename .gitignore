@@ -1,59 +1,56 @@
-# Build output
-/build/
-/cmake-build-*/
+# Build directories
+build/
+build-*/
+cmake-build-*/
 
-# Prerequisites
-*.d
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile.cmake
+compile_commands.json
+CTestTestfile.cmake
+Testing/
 
-# Object files
+# Compiler and analysis artifacts
 *.o
-*.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
 *.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
 *.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
+*.elf
 *.hex
-
-# Debug files
-*.dSYM/
+*.bin
+*.map
+*.lst
 *.su
-*.idb
-*.pdb
+*.ctu-info
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
 
-# debug information files
-*.dwo
+# Pre-commit
+.pre-commit-cache/
+
+# Renode / Robot Framework generated output
+log.html
+report.html
+output.xml
+robot_output.xml
+*.robot.log
+*.robot.png
+*.robot.svg
+*.fail0.log*
+*.fail0.save
+snapshots/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
