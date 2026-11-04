@@ -13,6 +13,7 @@ jobs:
   host:
     name: Host Tests
     runs-on: ubuntu-22.04
+    timeout-minutes: 10
 
     steps:
       - name: Checkout
@@ -38,6 +39,7 @@ jobs:
   stm32:
     name: STM32 Firmware
     runs-on: ubuntu-22.04
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
@@ -86,3 +88,19 @@ jobs:
 
       - name: MISRA and Cppcheck
         run: make misra
+
+      - name: Run Renode simulation tests
+        uses: antmicro/renode-test-action@v5
+        with:
+          renode-revision: v1.17.0
+          tests-to-run: Tests/Renode/stm32f4_discovery.robot
+          renode-arguments: --variable ELF:@${{ github.workspace }}/build/stm32/App/firmware.elf
+          artifacts-path: build/renode-results
+
+      - name: Upload Renode reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: renode-test-reports
+          path: build/renode-results
+          if-no-files-found: ignore

@@ -1,5 +1,5 @@
 .PHONY: all host stm32 test size clean help tidy-host tidy-stm32 \
-	misra pre-commit-checks target-tests
+	misra pre-commit-checks target-tests renode
 
 CPPCHECK ?= cppcheck
 MISRA_ADDON ?= $(shell find /usr /usr/local \
@@ -55,11 +55,29 @@ pre-commit-checks: host stm32
 target-tests: stm32
 	cmake --build --preset stm32 --target target_tests
 
+renode: stm32
+	renode-test --variable ELF:@$(CURDIR)/build/stm32/App/firmware.elf \
+		Tests/Renode/stm32f4_discovery.robot
+
 help:
 	@echo "Available targets:"
-	@echo "  all    - Build host tests and STM32 firmware"
-	@echo "  host   - Build host tests"
-	@echo "  stm32  - Build STM32 firmware"
-	@echo "  test   - Build and run host tests"
-	@echo "  size   - Show firmware memory usage"
-	@echo "  clean  - Remove build directory"
+	@echo ""
+	@echo "Build:"
+	@echo "  all                 Build host tests and STM32 firmware"
+	@echo "  host                Configure and build host tests"
+	@echo "  stm32               Configure and build STM32 firmware"
+	@echo "  clean               Remove build directory"
+	@echo ""
+	@echo "Tests:"
+	@echo "  test                Build and run host tests"
+	@echo "  target-tests        Build STM32 target tests"
+	@echo "  renode              Run Renode simulation tests"
+	@echo ""
+	@echo "Analysis:"
+	@echo "  size                Show firmware memory usage"
+	@echo "  tidy-host           Run clang-tidy on host code"
+	@echo "  tidy-stm32          Run clang-tidy on STM32 code"
+	@echo "  misra               Run Cppcheck with MISRA checks"
+	@echo "  pre-commit-checks   Run all pre-commit checks"
+	@echo ""
+	@echo "Run 'make <target>' to execute a target."
