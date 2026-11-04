@@ -1,0 +1,6 @@
+[submodule "Platform/CMSIS/Core"]
+	path = Platform/CMSIS/Core
+	url = https://github.com/ARM-software/CMSIS_6.git
+[submodule "Platform/CMSIS/Device/ST/STM32F4xx"]
+	path = Platform/CMSIS/Device/ST/STM32F4xx
+	url = https://github.com/STMicroelectronics/cmsis-device-f4.git
