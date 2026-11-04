@@ -5,7 +5,7 @@ on:
   pull_request:
   workflow_dispatch:
 
-concurrecny:
+concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
@@ -66,11 +66,6 @@ jobs:
           test -f build/stm32/App/firmware.hex
           test -f build/stm32/App/firmware.bin
           arm-none-eabi-size build/stm32/App/firmware.elf
-
-      - name: Check target test artifact
-        run: |
-          test -f build/stm32/Tests/Target/target_tests.elf
-          arm-none-eabi-size build/stm32/Tests/Target/target_tests.elf
 
       - name: Check target test artifact
         run: |
