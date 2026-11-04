@@ -25,4 +25,5 @@ endif()
 
 if(BUILD_FIRMWARE)
     add_subdirectory(App)
+    add_subdirectory(Tests/Target)
 endif()
