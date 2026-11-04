@@ -43,6 +43,7 @@ misra: stm32
 		--addon=$(MISRA_ADDON) \
 		--enable=warning,style,performance,portability \
 		--inline-suppr \
+		--suppress='*:*_deps/unity-src*' \
 		--error-exitcode=1
 
 pre-commit-checks: host stm32

@@ -6,21 +6,10 @@ FetchContent_Declare(
     GIT_TAG v2.6.1
 )
 
-FetchContent_GetProperties(Unity)
-if(NOT unity_POPULATED)
-    FetchContent_Populate(Unity)
-endif()
-
-add_library(unity STATIC
-    ${unity_SOURCE_DIR}/src/unity.c
-)
+FetchContent_MakeAvailable(Unity)
 
 target_compile_options(unity PRIVATE
     ${ARM_CPU_FLAGS}
-)
-
-target_include_directories(unity PUBLIC
-    ${unity_SOURCE_DIR}/src
 )
 
 add_executable(target_tests
