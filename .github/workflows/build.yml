@@ -13,8 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install CMake
-        run: sudo apt-get update && sudo apt-get install -y cmake
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake clang-tidy
 
       - name: Configure
         run: cmake --preset host
@@ -24,9 +26,6 @@ jobs:
 
       - name: Test
         run: ctest --preset host
-
-      - name: Install clang-tidy
-        run: sudo apt-get install -y clang-tidy
 
       - name: Run clang-tidy
         run: make tidy-host
@@ -39,10 +38,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install ARM GCC
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi
+          sudo apt-get install -y \
+            cmake \
+            clang-tidy \
+            cppcheck \
+            gcc-arm-none-eabi \
+            binutils-arm-none-eabi \
+            libnewlib-arm-none-eabi
 
       - name: Configure
         run: cmake --preset stm32
@@ -66,8 +71,8 @@ jobs:
             build/stm32/App/firmware.hex
             build/stm32/App/firmware.bin
 
-      - name: Install clang-tidy
-        run: sudo apt-get install -y clang-tidy
-
       - name: Run clang-tidy
         run: make tidy-stm32
+
+      - name: MISRA and Cppcheck
+        run: make misra

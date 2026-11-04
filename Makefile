@@ -1,4 +1,10 @@
 .PHONY: all host stm32 test size clean help tidy-host tidy-stm32
+	misra
+
+CPPCHECK ?= cppcheck
+MISRA_ADDON ?= $(shell find /usr /usr/local \
+	-type f -path '*/cppcheck/addons/misra.py' \
+	-print -quit 2>/dev/null)
 
 all: host stm32
 
@@ -28,6 +34,16 @@ tidy-stm32:
 	cmake --preset stm32
 	cmake --build --preset stm32
 	clang-tidy -p build/stm32 App/Src/main.c Platform/Startup/runtime.c
+
+misra: stm32
+	@test -f "$(MISRA_ADDON)" || \
+		(echo "ERROR: Cppcheck MISRA addon not found"; exit 1)
+	$(CPPCHECK) \
+		--project=build/stm32/compile_commands.json \
+		--addon=$(MISRA_ADDON) \
+		--enable=warning,style,performance,portability \
+		--inline-suppr \
+		--error-exitcode=1
 
 help:
 	@echo "Available targets:"

@@ -1,0 +1,3 @@
+{"summary": "MisraExternalIdentifiers", "data": [{"name": "_init", "file": "Platform/Startup/runtime.c", "line": 7, "column": 6, "decl": false}]}
+{"summary": "MisraInternalIdentifiers", "data": []}
+{"summary": "MisraLocalIdentifiers", "data": []}
